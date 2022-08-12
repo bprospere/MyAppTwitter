@@ -3,11 +3,13 @@ package com.codepath.apps.restclienttemplate.models;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Parcel
 public class Tweet {
+    public Tweet(){}
 
     public  String body;
     public long id;
@@ -31,5 +33,25 @@ public class Tweet {
 
         }
         return tweets;
+    }
+
+    public String getBody() {
+
+        return body;
+    }
+
+    public long getId() {
+
+        return id;
+    }
+
+    public String getCreateAt() {
+
+        return createAt;
+    }
+
+    public User getUser() {
+
+        return user;
     }
 }

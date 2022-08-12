@@ -1,9 +1,12 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,7 +16,9 @@ import com.codepath.apps.restclienttemplate.models.Tweet;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import org.parceler.Parcels;
+
+
 import java.util.List;
 
 public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder> {
@@ -29,8 +34,9 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view =LayoutInflater.from(context).inflate(R.layout.item_tweet,parent,false);
+        TweetsAdapter.ViewHolder viewHolder = new TweetsAdapter.ViewHolder(view,listener);
 
-        return new ViewHolder(view);
+        return viewHolder;
     }
 
     @Override
@@ -43,6 +49,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
+
         return tweets.size();
     }
 
@@ -56,27 +63,54 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         tweets.addAll(tweetList);
         notifyDataSetChanged();
     }
-    public class ViewHolder extends RecyclerView.ViewHolder{
 
+
+    public interface OnItemClickListener {
+    void OnItemClick(View itemView, int Position);
+    }
+    private OnItemClickListener listener;
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+
+        this.listener=listener;
+    }
+
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView ivProfileImage;
         TextView tvBody;
         TextView tvSreenName;
-        public ViewHolder(@NonNull View itemView) {
+        TextView usersName;
+        public ViewHolder(@NonNull View itemView, final OnItemClickListener clickListener) {
             super(itemView);
-
-
             ivProfileImage=itemView.findViewById(R.id.ivProfileImage);
             tvBody=itemView.findViewById(R.id.tvBody);
             tvSreenName=itemView.findViewById(R.id.tvScreenName);
+            usersName=itemView.findViewById(R.id.usersName);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.OnItemClick(itemView, getAdapterPosition());
+                }
+            });
+
+
         }
 
+
         public void bind(Tweet tweet) {
-            tvBody.setText(tweet.body);
-            tvSreenName.setText(tweet.user.screenName);
+            tvBody.setText(tweet.getBody());
+            tvSreenName.setText(tweet.user.getScreenName());
+            usersName.setText(tweet.user.getName());
+
 
             Glide.with(context)
                     .load(tweet.user.profileImageUrl)
                     .into(ivProfileImage);
+
         }
     }
+
+
 }
