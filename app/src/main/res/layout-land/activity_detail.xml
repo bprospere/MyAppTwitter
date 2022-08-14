@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".DetailActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="50dp"
@@ -45,7 +54,7 @@
     <ImageView
         android:id="@+id/ic_com"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/description"
         android:layout_marginStart="50dp"
         app:srcCompat="@drawable/ic_comment" />
@@ -53,7 +62,7 @@
     <ImageView
         android:id="@+id/ic_rep"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/description"
         android:layout_toEndOf="@id/ic_com"
         app:srcCompat="@drawable/ic_reply" />
@@ -61,7 +70,7 @@
     <ImageView
         android:id="@+id/ic_hea"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/description"
         android:layout_toEndOf="@id/ic_rep"
         app:srcCompat="@drawable/ic_heart" />
@@ -69,7 +78,7 @@
     <ImageView
         android:id="@+id/ic_sha"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/description"
         android:layout_toEndOf="@id/ic_hea"
         app:srcCompat="@drawable/ic_share" />

@@ -56,7 +56,7 @@
     <ImageView
         android:id="@+id/ic_com"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/tvBody"
         android:layout_marginStart="50dp"
         app:srcCompat="@drawable/ic_comment" />
@@ -64,7 +64,7 @@
     <ImageView
         android:id="@+id/ic_rep"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/tvBody"
         android:layout_toEndOf="@id/ic_com"
         app:srcCompat="@drawable/ic_reply" />
@@ -72,7 +72,7 @@
     <ImageView
         android:id="@+id/ic_hea"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/tvBody"
         android:layout_toEndOf="@id/ic_rep"
         app:srcCompat="@drawable/ic_heart" />
@@ -80,7 +80,7 @@
     <ImageView
         android:id="@+id/ic_sha"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/tvBody"
         android:layout_toEndOf="@id/ic_hea"
         app:srcCompat="@drawable/ic_share" />

@@ -101,8 +101,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
         public void bind(Tweet tweet) {
             tvBody.setText(tweet.getBody());
-            tvSreenName.setText(tweet.user.getScreenName());
-            usersName.setText(tweet.user.getName());
+            tvSreenName.setText(tweet.user.getName());
+            usersName.setText(tweet.user.getScreenName());
 
 
             Glide.with(context)

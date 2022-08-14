@@ -41,6 +41,8 @@ public class TimelineActivity extends AppCompatActivity {
         client=TwitterApp.getRestClient(this);
         Toolbar toolbar =findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(" ");
         swipeContainer = findViewById(R.id.swipeContainer);
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,

@@ -17,30 +17,28 @@
         app:srcCompat="@drawable/ic_heart"/>
 
     <TextView
-        android:id="@+id/tvScreenName"
+        android:id="@+id/usersName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@id/ivProfileImage"
+        android:layout_marginStart="10dp"
+        android:layout_alignBottom="@+id/tvScreenName"
         android:fontFamily="sans-serif-thin"
         android:text='Prospere'
-        android:textStyle="bold"
+        android:layout_toEndOf="@+id/tvScreenName"
         android:textColor="@android:color/black"
-        android:textSize="24sp" />
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
 
     <TextView
-        android:id="@+id/usersName"
-        android:layout_width="251dp"
-        android:layout_height="0dp"
-        android:layout_alignBottom="@+id/tvScreenName"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
+        android:id="@+id/tvScreenName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
         android:layout_marginEnd="-3dp"
         android:layout_marginBottom="11dp"
-        android:layout_toEndOf="@+id/tvScreenName"
+        android:layout_toEndOf="@id/ivProfileImage"
         android:text="bprospere" />
-
 
     <TextView
         android:id="@+id/tvBody"
@@ -59,7 +57,7 @@
     <ImageView
         android:id="@+id/ic_com"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/tvBody"
         android:layout_marginStart="50dp"
         app:srcCompat="@drawable/ic_comment" />
@@ -67,7 +65,7 @@
     <ImageView
         android:id="@+id/ic_rep"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/tvBody"
         android:layout_toEndOf="@id/ic_com"
         app:srcCompat="@drawable/ic_reply" />
@@ -75,7 +73,7 @@
     <ImageView
         android:id="@+id/ic_hea"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/tvBody"
         android:layout_toEndOf="@id/ic_rep"
         app:srcCompat="@drawable/ic_heart" />
@@ -83,7 +81,7 @@
     <ImageView
         android:id="@+id/ic_sha"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/tvBody"
         android:layout_toEndOf="@id/ic_hea"
         app:srcCompat="@drawable/ic_share" />
