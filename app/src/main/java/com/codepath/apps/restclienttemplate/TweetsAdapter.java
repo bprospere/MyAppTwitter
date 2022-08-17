@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import androidx.annotation.NonNull;
@@ -116,6 +117,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
             Glide.with(context)
                     .load(tweet.user.profileImageUrl)
+                    .transform(new RoundedCorners(50))
                     .into(ivProfileImage);
 
             if(!tweet.media.getMediaUrl().isEmpty()) {
