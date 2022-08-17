@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tool="http://schemas.android.com/tool"
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -90,7 +91,7 @@
             android:layout_marginTop="20dp"
             android:layout_toEndOf="@+id/tvRetweet"
             android:drawablePadding="8dp"
-            android:text="favorite" />
+            tool:text="Favorite" />
 
         <TextView
             android:id="@+id/tvRetweet"
@@ -100,7 +101,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
             android:drawablePadding="8dp"
-            android:text="10"
+            tool:text="Retweet"
             android:textSize="15dp"
             tools:text="Retweets" />
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tool="http://schemas.android.com/tool"
     android:layout_margin="5dp">
 
 
@@ -86,7 +87,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="15dp"
         android:drawablePadding="8dp"
-        android:text="15"
+        tool:text="15"
         app:drawableLeftCompat="@drawable/ic_comment" />
 
     <TextView
@@ -98,7 +99,7 @@
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@id/ic_com"
         android:drawablePadding="8dp"
-        android:text="15"
+        tool:text="15"
         app:drawableLeftCompat="@drawable/ic_reply" />
 
 
@@ -111,7 +112,7 @@
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@id/ic_rep"
         android:drawablePadding="8dp"
-        android:text="15"
+        tool:text="15"
         app:drawableLeftCompat="@drawable/ic_heart" />
 
     <TextView
@@ -123,7 +124,7 @@
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@id/ic_hea"
         android:drawablePadding="8dp"
-        android:text="15"
+        tool:text="15"
         app:drawableLeftCompat="@drawable/ic_share" />
 
 
