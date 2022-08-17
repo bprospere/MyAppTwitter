@@ -1,5 +1,7 @@
 package com.codepath.apps.restclienttemplate.models;
 
+import com.codepath.apps.restclienttemplate.TimeFormatter;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,6 +17,9 @@ public class Tweet {
     public long id;
     public  String createAt;
     public User user;
+    public String favorite_count;
+    public String retweet_count;
+
 
     public  static Tweet fromJson(JSONObject jsonObject) throws JSONException {
         Tweet tweet=new Tweet();
@@ -22,6 +27,9 @@ public class Tweet {
         tweet.createAt= jsonObject.getString("created_at");
         tweet.id= jsonObject.getLong("id");
         tweet.user=User.fromJson(jsonObject.getJSONObject("user")) ;
+        tweet.favorite_count= jsonObject.getString("favorite_count");
+        tweet.retweet_count= jsonObject.getString("retweet_count");
+
 
         return tweet;
     }
@@ -34,6 +42,13 @@ public class Tweet {
         }
         return tweets;
     }
+
+    public static String getFormattedTime(String createAt) {
+        return TimeFormatter.getTimeDifference(createAt);
+    }
+
+
+
 
     public String getBody() {
 
@@ -53,5 +68,17 @@ public class Tweet {
     public User getUser() {
 
         return user;
+    }
+
+    public String getFavorite_count() {
+        return favorite_count;
+    }
+
+    public String getRetweet_count() {
+        return retweet_count;
+    }
+
+    public static String getFormattedTime1(String createAt) {
+        return TimeFormatter.getTimeStamp(createAt);
     }
 }

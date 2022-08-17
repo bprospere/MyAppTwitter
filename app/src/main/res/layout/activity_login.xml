@@ -1,19 +1,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".LoginActivity" >
+    android:background="#1DA1fD"
+    tools:context=".LoginActivity">
 
     <Button
+        android:id="@+id/buttnLog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
         android:onClick="loginToRest"
+        android:layout_marginTop="250dp"
         android:text="@string/login_label" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="127dp"
+        android:layout_marginTop="80dp"
+        app:srcCompat="@drawable/logo_twitter" />
+
+    <!--    <ImageView-->
+<!--        android:id="@+id/imageLogo"-->
+<!--        android:layout_width="389dp"-->
+<!--        android:layout_height="206dp"-->
+<!--        android:layout_above="@id/buttnLog"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_marginTop="165dp"-->
+<!--        android:layout_marginBottom="5dp"-->
+<!--        app:srcCompat="@drawable/logo_twitter" />-->
 
 </RelativeLayout>

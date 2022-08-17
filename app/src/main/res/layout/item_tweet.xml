@@ -12,19 +12,21 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="-5dp"
-        tools:srcCompat="@tools:sample/avatars"
-        app:srcCompat="@drawable/ic_heart"/>
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@drawable/ic_heart"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/usersName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_alignBottom="@+id/tvScreenName"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@+id/tvScreenName"
         android:fontFamily="sans-serif-thin"
         android:text='Prospere'
-        android:layout_toEndOf="@+id/tvScreenName"
         android:textColor="@android:color/black"
         android:textSize="15sp"
         android:textStyle="bold" />
@@ -35,10 +37,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
-        android:layout_marginEnd="-3dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginTop="30dp"
         android:layout_toEndOf="@id/ivProfileImage"
-        android:text="bprospere" />
+        android:text="bprospere"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvBody"
@@ -46,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvScreenName"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:layout_toEndOf="@id/ivProfileImage"
         android:autoLink="all"
         android:fontFamily="sans-serif-thin"
@@ -54,37 +56,74 @@
         android:textColor="@android:color/black"
         android:textSize="15sp" />
 
+
     <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="393dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/tvBody"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="2dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@+id/usersName" />
+
+    <TextView
         android:id="@+id/ic_com"
         android:layout_width="50dp"
         android:layout_height="30dp"
-        android:layout_below="@+id/tvBody"
-        android:layout_marginStart="50dp"
-        app:srcCompat="@drawable/ic_comment" />
+        android:layout_below="@id/profileImage"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="3dp"
+        android:drawablePadding="8dp"
+        android:text="1"
+        app:drawableLeftCompat="@drawable/ic_comment" />
 
-    <ImageView
+    <TextView
         android:id="@+id/ic_rep"
         android:layout_width="50dp"
         android:layout_height="30dp"
-        android:layout_below="@+id/tvBody"
+        android:layout_below="@id/profileImage"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="3dp"
         android:layout_toEndOf="@id/ic_com"
-        app:srcCompat="@drawable/ic_reply" />
+        android:drawablePadding="8dp"
+        android:text="1"
+        app:drawableLeftCompat="@drawable/ic_reply" />
 
-    <ImageView
+
+    <TextView
         android:id="@+id/ic_hea"
         android:layout_width="50dp"
         android:layout_height="30dp"
-        android:layout_below="@+id/tvBody"
+        android:layout_below="@id/profileImage"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="3dp"
         android:layout_toEndOf="@id/ic_rep"
-        app:srcCompat="@drawable/ic_heart" />
+        android:drawablePadding="8dp"
+        android:text="1"
+        app:drawableLeftCompat="@drawable/ic_heart" />
 
-    <ImageView
+    <TextView
         android:id="@+id/ic_sha"
         android:layout_width="50dp"
         android:layout_height="30dp"
-        android:layout_below="@+id/tvBody"
+        android:layout_below="@+id/profileImage"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="3dp"
         android:layout_toEndOf="@id/ic_hea"
-        app:srcCompat="@drawable/ic_share" />
+        android:drawablePadding="8dp"
+        android:text="1"
+        app:drawableLeftCompat="@drawable/ic_share" />
 
 
 </RelativeLayout>
