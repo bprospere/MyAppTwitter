@@ -13,6 +13,8 @@ import java.util.List;
 public class Tweet {
     public Tweet(){}
 
+    public Media media;
+
     public  String body;
     public long id;
     public  String createAt;
@@ -21,18 +23,36 @@ public class Tweet {
     public String retweet_count;
 
 
+
     public  static Tweet fromJson(JSONObject jsonObject) throws JSONException {
         Tweet tweet=new Tweet();
         tweet.body= jsonObject.getString("text");
         tweet.createAt= jsonObject.getString("created_at");
         tweet.id= jsonObject.getLong("id");
         tweet.user=User.fromJson(jsonObject.getJSONObject("user")) ;
+        tweet.media=Media.fromJson(jsonObject.getJSONObject("entities")) ;
+
         tweet.favorite_count= jsonObject.getString("favorite_count");
         tweet.retweet_count= jsonObject.getString("retweet_count");
 
+//        JSONObject objExtMedias = jsonObject.getJSONObject("extended_entities");
+//        if(objExtMedias!=null) {
+//            JSONArray jsonMedias = objExtMedias.getJSONArray("media");
+//            if(jsonMedias != null ) {
+//                tweet.media = Media.fromJSON(jsonMedias.getJSONObject(0));
+//            }
+//        }
+
 
         return tweet;
+
+
+
     }
+
+
+
+
     public  static List<Tweet>fromJsonArray(JSONArray jsonArray) throws JSONException {
         List<Tweet> tweets= new ArrayList<>();
 
@@ -41,7 +61,10 @@ public class Tweet {
 
         }
         return tweets;
+
     }
+
+
 
     public static String getFormattedTime(String createAt) {
         return TimeFormatter.getTimeDifference(createAt);
@@ -71,13 +94,17 @@ public class Tweet {
     }
 
     public String getFavorite_count() {
+
         return favorite_count;
     }
 
     public String getRetweet_count() {
-        return retweet_count;
-    }
 
+        return   retweet_count;
+    }
+    public void setMedia(Media media) {
+        this.media = media;
+    }
     public static String getFormattedTime1(String createAt) {
         return TimeFormatter.getTimeStamp(createAt);
     }

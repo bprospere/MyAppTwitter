@@ -20,8 +20,9 @@ public class DetailActivity extends AppCompatActivity {
     TextView userName;
     TextView description;
     TextView date2;
-    TextView info;
-    TextView info1;
+    TextView tvFavorite;
+    TextView tvRetweet;
+    ImageView image1;
 
 
     @Override
@@ -29,13 +30,15 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+
         image=findViewById(R.id.image);
         name=findViewById(R.id.name);
         userName=findViewById(R.id.userName);
         description=findViewById(R.id.description);
         date2 = findViewById(R.id.date2);
-        info=findViewById(R.id.info);
-        info1=findViewById(R.id.info1);
+        tvFavorite=findViewById(R.id.tvFavorite);
+        tvRetweet=findViewById(R.id.tvRetweet);
+        image1=findViewById(R.id.image1);
 
 
 
@@ -48,8 +51,9 @@ public class DetailActivity extends AppCompatActivity {
         userName.setText(tweet.getUser().getScreenName());
         description.setText(tweet.getBody());
         date2.setText(Tweet.getFormattedTime1(tweet.createAt));
-        info.setText(tweet.getFavorite_count());
-        info1.setText(tweet.getRetweet_count());
+        tvFavorite.setText(tweet.getFavorite_count());
+        tvRetweet.setText(tweet.getRetweet_count());
+
 
 
 
@@ -60,5 +64,11 @@ public class DetailActivity extends AppCompatActivity {
                 .into(image);
 
 
+        if(!tweet.media.getMediaUrl().isEmpty()) {
+
+            Glide.with(this)
+                    .load(tweet.media.getMediaUrl())
+                    .into(image1);
+        }
     }
 }

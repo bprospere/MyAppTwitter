@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/add_tweet"
-        android:title="Tweet"
-        android:icon="@drawable/ic_add_tweet"
         android:orderInCategory="100"
-        app:showAsAction="always|collapseActionView"/>
+        android:icon="@drawable/ic_add_tweet"
+        app:showAsAction="always|collapseActionView"
+        android:title="Tweet"/>
 
 
 

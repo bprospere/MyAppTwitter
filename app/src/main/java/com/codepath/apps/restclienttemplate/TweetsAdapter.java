@@ -111,17 +111,19 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvBody.setText(tweet.getBody());
             tvSreenName.setText(tweet.user.getName());
             usersName.setText(tweet.user.getScreenName());
-           date.setText(Tweet.getFormattedTime(tweet.createAt));
+            date.setText(Tweet.getFormattedTime(tweet.getCreateAt()));
 
 
             Glide.with(context)
                     .load(tweet.user.profileImageUrl)
                     .into(ivProfileImage);
 
-            Glide.with(context)
-                    .load(tweet.user.profileImageUrl)
-                    .into(profileImage);
+            if(!tweet.media.getMediaUrl().isEmpty()) {
 
+                Glide.with(context)
+                        .load(tweet.media.getMediaUrl())
+                        .into(profileImage);
+            }
         }
     }
 
