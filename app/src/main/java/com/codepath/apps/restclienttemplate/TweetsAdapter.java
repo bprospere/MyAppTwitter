@@ -1,23 +1,21 @@
 package com.codepath.apps.restclienttemplate;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.codepath.apps.restclienttemplate.models.Media;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.parceler.Parcels;
 
 
 import java.util.List;
@@ -25,6 +23,7 @@ import java.util.List;
 public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder> {
     Context context;
     List<Tweet> tweets;
+    
 
     public TweetsAdapter(Context context, List<Tweet> tweets) {
         this.context = context;
@@ -87,6 +86,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView usersName;
         TextView date;
         ImageView profileImage;
+//        VideoView videoTweet;
+        
 
         public ViewHolder(@NonNull View itemView, final OnItemClickListener clickListener) {
             super(itemView);
@@ -96,6 +97,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             usersName=itemView.findViewById(R.id.usersName);
             date=itemView.findViewById(R.id.date);
             profileImage=itemView.findViewById(R.id.profileImage);
+//            videoTweet=itemView.findViewById(R.id.videoTweet);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -117,18 +120,38 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
             Glide.with(context)
                     .load(tweet.user.profileImageUrl)
-                    .transform(new RoundedCorners(50))
+                    .transform(new CircleCrop())
                     .into(ivProfileImage);
 
-            if(!tweet.media.getMediaUrl().isEmpty()) {
-
+            if (!tweet.media.getMediaUrl().isEmpty()) {
+                profileImage.setVisibility(itemView.VISIBLE);
                 Glide.with(context)
                         .load(tweet.media.getMediaUrl())
                         .into(profileImage);
             }
+            else{
+                profileImage.setVisibility(itemView.GONE);
+            }
+//
+//            if (!tweet.url.getDisplayUrl().isEmpty()) {
+//
+//                videoTweet.requestFocus();
+//                videoTweet.start();
+//            }
+//
+////                videoTweet.isPlaying();
+
+            }
+
+
         }
     }
 
 
 
-}
+
+
+
+
+
+

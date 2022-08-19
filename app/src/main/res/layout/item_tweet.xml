@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:tool="http://schemas.android.com/tool"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_margin="5dp">
 
 
@@ -46,7 +46,7 @@
     <TextView
         android:id="@+id/tvBody"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@id/tvScreenName"
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
@@ -65,10 +65,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="67dp"
         tools:srcCompat="@tools:sample/avatars" />
-
 
 
     <TextView
@@ -85,10 +84,10 @@
         android:layout_height="30dp"
         android:layout_below="@id/profileImage"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:drawablePadding="8dp"
-        tool:text="15"
-        app:drawableLeftCompat="@drawable/ic_comment" />
+        app:drawableLeftCompat="@drawable/ic_comment"
+        android:text="15" />
 
     <TextView
         android:id="@+id/ic_rep"
@@ -96,11 +95,11 @@
         android:layout_height="30dp"
         android:layout_below="@id/profileImage"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:layout_toEndOf="@id/ic_com"
         android:drawablePadding="8dp"
-        tool:text="15"
-        app:drawableLeftCompat="@drawable/ic_reply" />
+        app:drawableLeftCompat="@drawable/ic_reply"
+        android:text="15"/>
 
 
     <TextView
@@ -109,11 +108,12 @@
         android:layout_height="30dp"
         android:layout_below="@id/profileImage"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:layout_toEndOf="@id/ic_rep"
         android:drawablePadding="8dp"
-        tool:text="15"
-        app:drawableLeftCompat="@drawable/ic_heart" />
+        android:text="15"
+        app:drawableLeftCompat="@drawable/ic_heart"
+         />
 
     <TextView
         android:id="@+id/ic_sha"
@@ -121,11 +121,14 @@
         android:layout_height="30dp"
         android:layout_below="@+id/profileImage"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:layout_toEndOf="@id/ic_hea"
         android:drawablePadding="8dp"
-        tool:text="15"
-        app:drawableLeftCompat="@drawable/ic_share" />
+        android:text="15"
+        app:drawableLeftCompat="@drawable/ic_share"
+         />
+
+
 
 
 </RelativeLayout>

@@ -14,6 +14,7 @@ public class Tweet {
     public Tweet(){}
 
     public Media media;
+    public Url url;
 
     public  String body;
     public long id;
@@ -31,17 +32,9 @@ public class Tweet {
         tweet.id= jsonObject.getLong("id");
         tweet.user=User.fromJson(jsonObject.getJSONObject("user")) ;
         tweet.media=Media.fromJson(jsonObject.getJSONObject("entities")) ;
-
+//        tweet.url=Url.fromJson(jsonObject.getJSONObject("extended_entities"));
         tweet.favorite_count= jsonObject.getString("favorite_count");
         tweet.retweet_count= jsonObject.getString("retweet_count");
-
-//        JSONObject objExtMedias = jsonObject.getJSONObject("extended_entities");
-//        if(objExtMedias!=null) {
-//            JSONArray jsonMedias = objExtMedias.getJSONArray("media");
-//            if(jsonMedias != null ) {
-//                tweet.media = Media.fromJSON(jsonMedias.getJSONObject(0));
-//            }
-//        }
 
 
         return tweet;
@@ -95,13 +88,22 @@ public class Tweet {
 
     public String getFavorite_count() {
 
-        return favorite_count;
+        return favorite_count + "     Favorites";
     }
 
     public String getRetweet_count() {
 
-        return   retweet_count;
+        return   retweet_count + "      Retweets";
     }
+
+    public Media getMedia() {
+        return media;
+    }
+
+    public Url getUrl() {
+        return url;
+    }
+
     public void setMedia(Media media) {
         this.media = media;
     }

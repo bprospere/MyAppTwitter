@@ -10,15 +10,15 @@
         android:id="@+id/buttnLog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
         android:onClick="loginToRest"
-        android:layout_marginTop="250dp"
         android:text="@string/login_label" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="127dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="180dp"
         app:srcCompat="@drawable/logo_twitter" />
 
     <!--    <ImageView-->

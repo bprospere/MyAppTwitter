@@ -1,16 +1,24 @@
 package com.codepath.apps.restclienttemplate;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.parceler.Parcel;
 import org.parceler.Parcels;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
@@ -29,6 +37,14 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        Toolbar toolbar =findViewById(R.id.toolBar);
+        setSupportActionBar(toolbar);
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        getSupportActionBar().setIcon(R.drawable.logo_twitter);
+
 
 
         image=findViewById(R.id.image);
@@ -60,15 +76,28 @@ public class DetailActivity extends AppCompatActivity {
 
         Glide.with(this)
                 .load(tweet.user.profileImageUrl)
-                .transform(new RoundedCorners(50))
+                .transform(new CircleCrop())
                 .into(image);
 
 
         if(!tweet.media.getMediaUrl().isEmpty()) {
-
+            image1.setVisibility(VISIBLE);
             Glide.with(this)
                     .load(tweet.media.getMediaUrl())
                     .into(image1);
         }
+
+        else {
+            image1.setVisibility(GONE);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int back = R.id.homeAsUp;
+        Intent intent = new Intent(DetailActivity.this,TimelineActivity.class);
+        intent.putExtra("back", Parcels.wrap(back));
+        DetailActivity.this.startActivity(intent);
+        return super.onOptionsItemSelected(item);
     }
 }
