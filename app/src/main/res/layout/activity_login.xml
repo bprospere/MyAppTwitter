@@ -1,34 +1,43 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tool"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1DA1fD"
-    tools:context=".LoginActivity">
+    android:orientation="vertical"
+    android:background="#1DA1FD"
+   >
 
-    <Button
-        android:id="@+id/buttnLog"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
-        android:onClick="loginToRest"
-        android:text="@string/login_label" />
+        android:layout_height="match_parent"
+        tools:context=".LoginActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="127dp"
-        android:layout_marginTop="180dp"
-        app:srcCompat="@drawable/logo_twitter" />
 
-    <!--    <ImageView-->
-<!--        android:id="@+id/imageLogo"-->
-<!--        android:layout_width="389dp"-->
-<!--        android:layout_height="206dp"-->
-<!--        android:layout_above="@id/buttnLog"-->
-<!--        android:layout_centerVertical="true"-->
-<!--        android:layout_marginTop="165dp"-->
-<!--        android:layout_marginBottom="5dp"-->
-<!--        app:srcCompat="@drawable/logo_twitter" />-->
+        <include
+            android:id="@+id/toolBar"
+            layout="@layout/tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white" />
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/buttnLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="350dp"
+            android:onClick="loginToRest"
+            android:text="Connect to twitter" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="127dp"
+            android:layout_marginTop="180dp"
+            app:srcCompat="@drawable/logo_twitter" />
+
+
+
+    </RelativeLayout>
+</LinearLayout>

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tool"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tool="http://schemas.android.com/tool"
     android:orientation="vertical">
+
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -58,11 +60,11 @@
 
         <ImageView
             android:id="@+id/image1"
-            android:layout_width="500dp"
-            android:layout_height="60dp"
+            android:layout_width="300dp"
+            android:layout_height="179dp"
             android:layout_below="@id/description"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="13dp"
             tools:srcCompat="@tools:sample/avatars" />
 
 
@@ -95,7 +97,7 @@
             android:layout_marginBottom="12dp"
             android:layout_toEndOf="@+id/tvRetweet"
             android:drawablePadding="8dp"
-            android:text="Favorite" />
+            />
 
         <TextView
             android:id="@+id/tvRetweet"
@@ -106,7 +108,7 @@
             android:layout_marginTop="20dp"
             android:drawablePadding="8dp"
             android:textSize="15dp"
-            tools:text="Retweet" />
+             />
 
         <View
             android:id="@+id/divider1"
@@ -124,7 +126,6 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="2dp"
             android:drawablePadding="8dp"
-            android:text="10"
             app:drawableLeftCompat="@drawable/ic_comment" />
 
         <TextView
@@ -136,7 +137,6 @@
             android:layout_marginTop="2dp"
             android:layout_toEndOf="@id/ic_com"
             android:drawablePadding="8dp"
-            android:text="10"
             app:drawableLeftCompat="@drawable/ic_reply" />
 
 
@@ -149,7 +149,6 @@
             android:layout_marginTop="2dp"
             android:layout_toEndOf="@id/ic_rep"
             android:drawablePadding="8dp"
-            android:text="10"
             app:drawableLeftCompat="@drawable/ic_heart" />
 
         <TextView
@@ -161,7 +160,6 @@
             android:layout_marginTop="2dp"
             android:layout_toEndOf="@id/ic_hea"
             android:drawablePadding="8dp"
-            android:text="10"
             app:drawableLeftCompat="@drawable/ic_share" />
 
         <View
@@ -171,7 +169,27 @@
             android:layout_below="@id/ic_com"
             android:background="?android:attr/listDivider" />
 
+        <TextView
+            android:id="@+id/heart_color"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/tvRetweet"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="-4dp"
+            android:layout_toEndOf="@id/ic_rep"
+            android:drawablePadding="8dp"
+            app:drawableLeftCompat="@drawable/heart_change" />
 
+        <TextView
+            android:id="@+id/ic_rep_change"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/tvRetweet"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="2dp"
+            android:layout_toEndOf="@id/ic_com"
+            android:drawablePadding="8dp"
+            app:drawableLeftCompat="@drawable/ic_reply_change" />
 
 
     </RelativeLayout>

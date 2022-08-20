@@ -86,7 +86,15 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView usersName;
         TextView date;
         ImageView profileImage;
-//        VideoView videoTweet;
+        TextView ic_com;
+        TextView ic_rep;
+        TextView  ic_hea;
+        TextView heart_color;
+        TextView  ic_rep_change;
+
+
+
+
         
 
         public ViewHolder(@NonNull View itemView, final OnItemClickListener clickListener) {
@@ -97,7 +105,13 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             usersName=itemView.findViewById(R.id.usersName);
             date=itemView.findViewById(R.id.date);
             profileImage=itemView.findViewById(R.id.profileImage);
-//            videoTweet=itemView.findViewById(R.id.videoTweet);
+            ic_com=itemView.findViewById(R.id.ic_com);
+            ic_rep=itemView.findViewById(R.id.ic_rep);
+            ic_hea=itemView.findViewById(R.id.ic_hea);
+            heart_color=itemView.findViewById(R.id.heart_color);
+            ic_rep_change=itemView.findViewById(R.id.ic_rep_change);
+
+
 
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +130,32 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvSreenName.setText(tweet.user.getName());
             usersName.setText(tweet.user.getScreenName());
             date.setText(Tweet.getFormattedTime(tweet.getCreateAt()));
+            
+
+
+
+
+
+            if(tweet.favorited) {
+                ic_hea.setVisibility(View.INVISIBLE);
+                heart_color.setVisibility(View.VISIBLE);
+
+            }
+            else {
+                ic_hea.setVisibility(View.VISIBLE);
+                heart_color.setVisibility(View.INVISIBLE);
+            }
+
+
+            if(tweet.favorited) {
+                ic_rep.setVisibility(View.INVISIBLE);
+                ic_rep_change.setVisibility(View.VISIBLE);
+
+            }
+            else {
+                ic_rep.setVisibility(View.VISIBLE);
+                ic_rep_change.setVisibility(View.INVISIBLE);
+            }
 
 
             Glide.with(context)
@@ -127,25 +167,76 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                 profileImage.setVisibility(itemView.VISIBLE);
                 Glide.with(context)
                         .load(tweet.media.getMediaUrl())
+                        .transform(new RoundedCorners(50))
                         .into(profileImage);
             }
             else{
                 profileImage.setVisibility(itemView.GONE);
             }
-//
-//            if (!tweet.url.getDisplayUrl().isEmpty()) {
-//
-//                videoTweet.requestFocus();
-//                videoTweet.start();
-//            }
-//
-////                videoTweet.isPlaying();
+
+
+            ic_rep.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    tweet.favorite_count++;
+                    ic_rep.setVisibility(View.INVISIBLE);
+                    ic_rep_change.setVisibility(View.VISIBLE);
+                    ic_rep_change.setText(tweet.getFavorite_count());
+                    tweet.favorited=true;
+                }
+            });
+
+
+
+            ic_hea.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    tweet.favorite_count++;
+                    ic_hea.setVisibility(View.INVISIBLE);
+                    heart_color.setVisibility(View.VISIBLE);
+                    heart_color.setText(tweet.getFavorite_count());
+                    tweet.favorited=true;
+                }
+            });
+
+
+
+            heart_color.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    tweet.favorite_count--;
+                    ic_hea.setVisibility(View.VISIBLE);
+                    heart_color.setVisibility(View.INVISIBLE);
+                    ic_hea.setText(tweet.getFavorite_count());
+                    tweet.favorited=false;
+                }
+            });
+            ic_rep_change.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    tweet.favorite_count--;
+                    ic_rep.setVisibility(View.VISIBLE);
+                    ic_rep_change.setVisibility(View.INVISIBLE);
+                    ic_rep.setText(tweet.getFavorite_count());
+                    tweet.favorited=false;
+                }
+            });
 
             }
 
 
+
+
+
+
+
+
         }
-    }
+        }
+
+
+
+
 
 
 

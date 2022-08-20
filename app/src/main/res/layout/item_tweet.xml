@@ -15,7 +15,6 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="-3dp"
         android:layout_marginTop="30dp"
-        app:srcCompat="@drawable/ic_heart"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -23,8 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvScreenName"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="40dp"
         android:layout_toEndOf="@+id/tvScreenName"
         android:fontFamily="sans-serif-thin"
         android:text='Prospere'
@@ -37,19 +36,19 @@
         android:id="@+id/tvScreenName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="40dp"
         android:layout_toEndOf="@id/ivProfileImage"
         android:text="bprospere"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvBody"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="332dp"
+        android:layout_height="36dp"
         android:layout_below="@id/tvScreenName"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_toEndOf="@id/ivProfileImage"
         android:autoLink="all"
         android:fontFamily="sans-serif-thin"
@@ -59,13 +58,13 @@
 
     <ImageView
         android:id="@+id/profileImage"
-        android:layout_width="500dp"
-        android:layout_height="100dp"
+        android:layout_width="300dp"
+        android:layout_height="179dp"
         android:layout_below="@id/tvBody"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="67dp"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -74,8 +73,8 @@
         android:id="@+id/date"
         android:layout_width="156dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="40dp"
         android:layout_toEndOf="@+id/usersName" />
 
     <TextView
@@ -83,11 +82,10 @@
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:layout_below="@id/profileImage"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="5dp"
         android:drawablePadding="8dp"
-        app:drawableLeftCompat="@drawable/ic_comment"
-        android:text="15" />
+        app:drawableLeftCompat="@drawable/ic_comment" />
 
     <TextView
         android:id="@+id/ic_rep"
@@ -95,11 +93,10 @@
         android:layout_height="30dp"
         android:layout_below="@id/profileImage"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/ic_com"
         android:drawablePadding="8dp"
-        app:drawableLeftCompat="@drawable/ic_reply"
-        android:text="15"/>
+        app:drawableLeftCompat="@drawable/ic_reply" />
 
 
     <TextView
@@ -108,12 +105,10 @@
         android:layout_height="30dp"
         android:layout_below="@id/profileImage"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/ic_rep"
         android:drawablePadding="8dp"
-        android:text="15"
-        app:drawableLeftCompat="@drawable/ic_heart"
-         />
+        app:drawableLeftCompat="@drawable/ic_heart" />
 
     <TextView
         android:id="@+id/ic_sha"
@@ -121,13 +116,32 @@
         android:layout_height="30dp"
         android:layout_below="@+id/profileImage"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/ic_hea"
         android:drawablePadding="8dp"
-        android:text="15"
         app:drawableLeftCompat="@drawable/ic_share"
          />
 
+    <TextView
+        android:id="@+id/heart_color"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/profileImage"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="-1dp"
+        android:layout_toEndOf="@id/ic_rep"
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/heart_change" />
+    <TextView
+        android:id="@+id/ic_rep_change"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/profileImage"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ic_com"
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/ic_reply_change" />
 
 
 

@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.appcompat.widget.Toolbar;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.codepath.apps.restclienttemplate.models.SampleModel;
@@ -27,6 +29,10 @@ public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		Tweet tweet= Parcels.unwrap(getIntent().getParcelableExtra("tweets"));
+		Toolbar toolbar =findViewById(R.id.toolBar);
+		setSupportActionBar(toolbar);
+		getSupportActionBar().setTitle(" Twitter");
+
 
 //
 

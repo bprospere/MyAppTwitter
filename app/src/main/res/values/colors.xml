@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="twitter_blue">#ff1da1f2</color>
-    <color name="twitter_or">#E2B356</color>
+    <color name="infavorite">#ff1da1f2</color>
+    <color name="favorite">#E2B356</color>
     <color name="medium_gray">#ffaab8c2</color>
     <color name="medium_green">#ff17bf63</color>
     <color name="medium_gray_30">#4daab8c2</color>
