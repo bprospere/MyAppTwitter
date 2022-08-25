@@ -25,6 +25,19 @@
         </com.google.android.material.appbar.AppBarLayout>
 
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:maxHeight="50dp"
+        android:maxWidth="100dp"
+        android:backgroundTint="#1DA1FD"
+        android:src="@drawable/ic_add_tweet"
+        app:layout_anchorGravity="bottom|center" />
+
+
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeContainer"
             android:layout_width="match_parent"

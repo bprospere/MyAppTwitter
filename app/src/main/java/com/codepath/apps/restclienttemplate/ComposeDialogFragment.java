@@ -1,7 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,25 +19,24 @@ import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONException;
-import org.parceler.Parcels;
 
 import okhttp3.Headers;
 
-public class EditNameDialogFragment extends DialogFragment {
-    public  static final String TAG="EditNameDialogFragment";
+public class ComposeDialogFragment extends DialogFragment {
+    public  static final String TAG="ComposeDialogFragment";
     public  static final  int MAX_TWEET_LENGTH=140;
     EditText etFragment;
     Button btnFragment;
     Context context;
     TwitterClient client;
 
-    public EditNameDialogFragment() {
+    public ComposeDialogFragment() {
 
     }
 
-    public static EditNameDialogFragment newInstance(String title) {
+    public static ComposeDialogFragment newInstance(String title) {
 
-        EditNameDialogFragment frag = new EditNameDialogFragment();
+        ComposeDialogFragment frag = new ComposeDialogFragment();
 
         Bundle args = new Bundle();
 
@@ -54,7 +52,7 @@ public class EditNameDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_fragment, container);
+        return inflater.inflate(R.layout.activity_compose_fragment, container);
     }
 
     @Override
@@ -69,6 +67,7 @@ public class EditNameDialogFragment extends DialogFragment {
         getDialog().setTitle(title);
 
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        getDialog().getWindow().setLayout(600,800);
 
 
 

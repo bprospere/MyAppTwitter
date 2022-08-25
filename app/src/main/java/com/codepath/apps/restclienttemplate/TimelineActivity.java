@@ -1,6 +1,5 @@
 package com.codepath.apps.restclienttemplate;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,14 +16,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.TweetDao;
 import com.codepath.apps.restclienttemplate.models.TweetWithUser;
 import com.codepath.apps.restclienttemplate.models.User;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,38 +44,27 @@ public class TimelineActivity extends AppCompatActivity {
     SwipeRefreshLayout swipeContainer;
     EndlessRecyclerViewScrollListener scrollListener;
     TweetDao tweetDao;
+    FloatingActionButton fragment;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.menu_main,menu);
-//        getMenuInflater().inflate(R.menu.image_twitter,menu);
-
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//
+//        getMenuInflater().inflate(R.menu.menu_main,menu);
+////        getMenuInflater().inflate(R.menu.image_twitter,menu);
+//
+//        return true;
+//    }
 
     private void showEditDialog() {
         FragmentManager fm = getSupportFragmentManager();
-        EditNameDialogFragment editNameDialogFragment = EditNameDialogFragment.newInstance("Some Title");
-        editNameDialogFragment.show(fm, "activity_fragment");
+        ComposeDialogFragment composeDialogFragment = ComposeDialogFragment.newInstance("Some Title");
+        composeDialogFragment.show(fm, "activity_compose_fragment");
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        if(item.getItemId()==R.id.compose){
-//            Toast.makeText(this,"Compose!",Toast.LENGTH_SHORT).show();
-//            Intent intent=new Intent(this,ComposeActivity.class);
-//            startActivityForResult(intent,REQUEST_CODE);
-            showEditDialog();
 
 
-            return true;
-        }
 
 
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -95,11 +82,19 @@ public class TimelineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
+
         client=TwitterApp.getRestClient(this);
+
+        FloatingActionButton fragment;
+
+        fragment = findViewById(R.id.fragment);
+
+
         Toolbar toolbar =findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setLogo(R.drawable.logo_twitter);
         getSupportActionBar().setTitle(" ");
+
 
          tweetDao = ((TwitterApp) getApplicationContext()).getMyDatabase().tweetDao();
          swipeContainer = findViewById(R.id.swipeContainer);
@@ -118,6 +113,7 @@ public class TimelineActivity extends AppCompatActivity {
         });
 
         rvTweets=findViewById(R.id.rvTweets);
+        fragment=findViewById(R.id.fragment);
         tweets= new ArrayList<>();
         adapter=new TweetsAdapter(this,tweets);
         adapter.setOnItemClickListener(new TweetsAdapter.OnItemClickListener(){
@@ -129,14 +125,20 @@ public class TimelineActivity extends AppCompatActivity {
                 TimelineActivity.this.startActivity(k);
             }
 
-
-
-
         });
 
         LinearLayoutManager layoutManager =new LinearLayoutManager(this);
         rvTweets.setLayoutManager(layoutManager);
         rvTweets.setAdapter(adapter);
+
+        // Click on add Button
+        fragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showEditDialog();
+            }
+        });
+
 
         scrollListener=new EndlessRecyclerViewScrollListener(layoutManager) {
             @Override
