@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:elevation="15dp"
     android:background="#1DA1FD"
+    android:elevation="15dp"
     app:titleTextColor="@android:color/white"/>
 

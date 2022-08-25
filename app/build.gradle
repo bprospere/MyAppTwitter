@@ -54,6 +54,7 @@ dependencies {
     implementation 'androidx.mediarouter:mediarouter:1.2.4'
     // Room for simple persistence with an ORM
     def room_version = "2.3.0"
+
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
     implementation 'com.facebook.stetho:stetho:1.5.1'
@@ -66,5 +67,10 @@ dependencies {
     implementation "androidx.vectordrawable:vectordrawable-animated:1.0.0" // AnimatedVectorDrawableCompat
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.google.android.material:material:1.4.0'
+
+
+
+
+
     
 }

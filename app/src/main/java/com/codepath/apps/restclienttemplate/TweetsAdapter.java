@@ -225,14 +225,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             }
 
 
-
-
-
-
-
-
-        }
-        }
+    }
+    }
 
 
 

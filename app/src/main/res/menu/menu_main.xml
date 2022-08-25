@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/back_icon"
-        android:orderInCategory="100"
+        android:id="@+id/compose"
         android:icon="@drawable/ic_add_tweet"
-        app:showAsAction="always|collapseActionView"
-        android:title="Tweet"/>
-        />
+        android:title="Compose"
+        android:layout_gravity="bottom|right"
+        app:layout_anchorGravity="bottom|right|end"
+        app:showAsAction="always" />
 </menu>
