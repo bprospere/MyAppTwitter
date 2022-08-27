@@ -1,53 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    >
 
+
+    <ImageButton
+        android:id="@+id/btnCancel1"
+        android:layout_width="114dp"
+        android:layout_height="70dp"
+        android:layout_alignBottom="@+id/userNames"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:backgroundTint="@android:color/white"
+        android:background="@android:color/white"
+        android:layout_marginBottom="14dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/ic_cancel"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+
+    <ImageView
+        android:id="@+id/tvProfileImage"
+        android:layout_width="91dp"
+        android:layout_height="61dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@id/names"
+        tools:srcCompat="@tools:sample/avatars" />
+
+
+    <TextView
+        android:id="@+id/names"
+        android:layout_width="92dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btnCancel1"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/userNames"
+        android:layout_width="100dp"
+        android:layout_height="34dp"
+        android:layout_below="@id/names"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="-3dp"
+        android:text="bprospere" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/text3"
+        android:layout_width="457dp"
+        android:layout_height="93dp"
+        android:layout_below="@id/tvProfileImage"
+        android:layout_marginTop="47dp"
         app:counterEnabled="true"
-        app:counterMaxLength="140">
+        app:counterMaxLength="140"
+        tools:ignore="NotSibling">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
+
             android:id="@+id/etFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_below="@+id/name"
+            android:layout_alignParentEnd="true"
+            android:drawablePadding="8dp"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="@string/what_s_happenning"
-            android:inputType="textMultiLine"
-            android:minLines="5" />
+            android:hint="@string/reply_this_tweet"
+            android:inputType="textImeMultiLine"
+            app:drawableLeftCompat="@drawable/arrow_down"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-
-        <Button
-            android:id="@+id/btnFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="5dp"
-            android:text="@string/tweet" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--    <EditText-->
-    <!--        android:id="@+id/etFragment"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="5dp"-->
-    <!--        android:layout_marginTop="5dp"-->
-    <!--        android:ems="10"-->
-    <!--        android:gravity="start|top"-->
-    <!--        android:hint="What's happenning"-->
-    <!--        android:inputType="textMultiLine"-->
-    <!--        android:minLines="5"-->
-    <!--        android:textSize="16dp" />-->
+    <Button
+        android:id="@+id/btnFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        android:layout_below="@id/text3"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="right"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="bottom|center"
+        android:text="@string/tweet" />
 
 
-</LinearLayout>
+</RelativeLayout>
+
+
+
+
+
+
+
+
+

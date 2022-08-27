@@ -45,8 +45,6 @@ public class Tweet {
     @ColumnInfo
     public boolean favorited;
 
-//    public Url url;
-
 
 
 
@@ -62,8 +60,6 @@ public class Tweet {
         tweet.userId= user.id;
         tweet.user=user;
         tweet.media=Media.fromJson(jsonObject.getJSONObject("entities")) ;
-
-//        tweet.url=Url.fromJson(jsonObject.getJSONObject("extended_entities"));
         tweet.favorite_count= jsonObject.getInt("retweet_count");
         tweet.retweet_count= jsonObject.getInt("retweet_count");
         tweet.favorites_count= jsonObject.getString("favorite_count");
@@ -155,5 +151,10 @@ public class Tweet {
     }
     public static String getFormattedTime1(String createAt) {
         return TimeFormatter.getTimeStamp(createAt);
+    }
+
+
+    public String getUrl() {
+        return "https://twitter.com/" + user.screenName + "/status/" + id;
     }
 }

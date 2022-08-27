@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
 import com.codepath.apps.restclienttemplate.models.TweetDao;
 import com.codepath.apps.restclienttemplate.models.TweetWithUser;
@@ -26,6 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
@@ -44,26 +46,20 @@ public class TimelineActivity extends AppCompatActivity {
     SwipeRefreshLayout swipeContainer;
     EndlessRecyclerViewScrollListener scrollListener;
     TweetDao tweetDao;
+    public static User user;
     FloatingActionButton fragment;
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//
-//        getMenuInflater().inflate(R.menu.menu_main,menu);
-////        getMenuInflater().inflate(R.menu.image_twitter,menu);
-//
-//        return true;
-//    }
 
     private void showEditDialog() {
         FragmentManager fm = getSupportFragmentManager();
         ComposeDialogFragment composeDialogFragment = ComposeDialogFragment.newInstance("Some Title");
+        Bundle bundle=new Bundle();
+        bundle.putParcelable("userInfo",Parcels.wrap(user));
+        composeDialogFragment.setArguments(bundle);
+        bundle.putParcelable("userInfo1",Parcels.wrap(user));
+        composeDialogFragment.setArguments(bundle);
         composeDialogFragment.show(fm, "activity_compose_fragment");
+
     }
-
-
-
-
 
 
     @Override
@@ -88,7 +84,6 @@ public class TimelineActivity extends AppCompatActivity {
         FloatingActionButton fragment;
 
         fragment = findViewById(R.id.fragment);
-
 
         Toolbar toolbar =findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
@@ -127,9 +122,14 @@ public class TimelineActivity extends AppCompatActivity {
 
         });
 
+
+
         LinearLayoutManager layoutManager =new LinearLayoutManager(this);
         rvTweets.setLayoutManager(layoutManager);
         rvTweets.setAdapter(adapter);
+
+
+
 
         // Click on add Button
         fragment.setOnClickListener(new View.OnClickListener() {
@@ -188,6 +188,24 @@ public class TimelineActivity extends AppCompatActivity {
     }
 
     private void populateHomeTimeline() {
+        client.getInfoUser(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Headers headers, JSON json) {
+                Log.i(TAG,"onSuccess!" + json.toString());
+                JSONObject jsonObject= json.jsonObject;
+                try {
+                    user =User.fromJson(jsonObject);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+                Log.i(TAG,"onFailure!" + throwable);
+            }
+        });
         client.getHomeTimeline(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {

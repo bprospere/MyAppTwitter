@@ -96,8 +96,7 @@
             android:layout_marginEnd="17dp"
             android:layout_marginBottom="12dp"
             android:layout_toEndOf="@+id/tvRetweet"
-            android:drawablePadding="8dp"
-            />
+            android:drawablePadding="8dp" />
 
         <TextView
             android:id="@+id/tvRetweet"
@@ -107,8 +106,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="20dp"
             android:drawablePadding="8dp"
-            android:textSize="15dp"
-             />
+            android:textSize="15dp" />
 
         <View
             android:id="@+id/divider1"
@@ -119,7 +117,7 @@
             android:background="?android:attr/listDivider" />
 
         <TextView
-            android:id="@+id/ic_com"
+            android:id="@+id/ic_com1"
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_below="@id/tvRetweet"
@@ -135,13 +133,13 @@
             android:layout_below="@id/tvRetweet"
             android:layout_marginStart="15dp"
             android:layout_marginTop="2dp"
-            android:layout_toEndOf="@id/ic_com"
+            android:layout_toEndOf="@id/ic_com1"
             android:drawablePadding="8dp"
             app:drawableLeftCompat="@drawable/ic_reply" />
 
 
         <TextView
-            android:id="@+id/ic_hea"
+            android:id="@+id/ic_stars"
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_below="@id/tvRetweet"
@@ -149,7 +147,7 @@
             android:layout_marginTop="2dp"
             android:layout_toEndOf="@id/ic_rep"
             android:drawablePadding="8dp"
-            app:drawableLeftCompat="@drawable/ic_heart" />
+            app:drawableLeftCompat="@drawable/ic_star" />
 
         <TextView
             android:id="@+id/ic_sha"
@@ -158,7 +156,7 @@
             android:layout_below="@+id/tvRetweet"
             android:layout_marginStart="20dp"
             android:layout_marginTop="2dp"
-            android:layout_toEndOf="@id/ic_hea"
+            android:layout_toEndOf="@id/ic_stars"
             android:drawablePadding="8dp"
             app:drawableLeftCompat="@drawable/ic_share" />
 
@@ -166,19 +164,19 @@
             android:id="@+id/divider2"
             android:layout_width="match_parent"
             android:layout_height="-10dp"
-            android:layout_below="@id/ic_com"
+            android:layout_below="@id/ic_com1"
             android:background="?android:attr/listDivider" />
 
         <TextView
-            android:id="@+id/heart_color"
+            android:id="@+id/star_color"
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_below="@id/tvRetweet"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="-4dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="2dp"
             android:layout_toEndOf="@id/ic_rep"
             android:drawablePadding="8dp"
-            app:drawableLeftCompat="@drawable/heart_change" />
+            app:drawableLeftCompat="@drawable/star_change" />
 
         <TextView
             android:id="@+id/ic_rep_change"
@@ -187,10 +185,47 @@
             android:layout_below="@id/tvRetweet"
             android:layout_marginStart="15dp"
             android:layout_marginTop="2dp"
-            android:layout_toEndOf="@id/ic_com"
+            android:layout_toEndOf="@id/ic_com1"
             android:drawablePadding="8dp"
             app:drawableLeftCompat="@drawable/ic_reply_change" />
 
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ic_com1"
+            android:layout_marginTop="40dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="140"
+            tools:ignore="NotSibling">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/etComment1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:layout_alignParentEnd="true"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="@string/what_s_happenning"
+                android:inputType="textImeMultiLine"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnInput"
+            android:layout_width="wrap_content"
+            android:layout_height="58dp"
+            android:layout_below="@id/text4"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="right"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="bottom|center"
+            android:text="@string/tweet" />
 
     </RelativeLayout>
 </LinearLayout>

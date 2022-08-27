@@ -1,6 +1,9 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +16,28 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.codepath.apps.restclienttemplate.models.Media;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.restclienttemplate.models.User;
+import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.parceler.Parcels;
+
 import java.util.List;
+
+import okhttp3.Headers;
 
 public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder> {
     Context context;
     List<Tweet> tweets;
+    TwitterClient client;
+    public static final  String TAG="TweetsAdapter";
     
 
     public TweetsAdapter(Context context, List<Tweet> tweets) {
@@ -80,6 +95,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+
         ImageView ivProfileImage;
         TextView tvBody;
         TextView tvSreenName;
@@ -88,13 +104,10 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         ImageView profileImage;
         TextView ic_com;
         TextView ic_rep;
-        TextView  ic_hea;
-        TextView heart_color;
+        TextView  ic_stars;
+        TextView star_color;
         TextView  ic_rep_change;
-
-
-
-
+        TextView ic_sha;
         
 
         public ViewHolder(@NonNull View itemView, final OnItemClickListener clickListener) {
@@ -107,9 +120,10 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             profileImage=itemView.findViewById(R.id.profileImage);
             ic_com=itemView.findViewById(R.id.ic_com);
             ic_rep=itemView.findViewById(R.id.ic_rep);
-            ic_hea=itemView.findViewById(R.id.ic_hea);
-            heart_color=itemView.findViewById(R.id.heart_color);
+            ic_stars=itemView.findViewById(R.id.ic_stars);
+            star_color=itemView.findViewById(R.id.star_color);
             ic_rep_change=itemView.findViewById(R.id.ic_rep_change);
+            ic_sha=itemView.findViewById(R.id.ic_sha);
 
 
 
@@ -130,20 +144,37 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvSreenName.setText(tweet.user.getName());
             usersName.setText(tweet.user.getScreenName());
             date.setText(Tweet.getFormattedTime(tweet.getCreateAt()));
-            
+
+            ic_com.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showEditDialog1();
+                }
+
+                private void showEditDialog1() {
+                    FragmentManager fm = ((FragmentActivity)context).getSupportFragmentManager();
+                    ComposeDialogFragment composeDialogFragment = ComposeDialogFragment.newInstance("Some Title");
+                    Bundle bundle=new Bundle();
+                    bundle.putParcelable("userInfo",Parcels.wrap(TimelineActivity.user));
+                    composeDialogFragment.setArguments(bundle);
+                    composeDialogFragment.show(fm, "activity_comment_frament");
+                }
+            });
+
+
 
 
 
 
 
             if(tweet.favorited) {
-                ic_hea.setVisibility(View.INVISIBLE);
-                heart_color.setVisibility(View.VISIBLE);
+                ic_stars.setVisibility(View.INVISIBLE);
+                star_color.setVisibility(View.VISIBLE);
 
             }
             else {
-                ic_hea.setVisibility(View.VISIBLE);
-                heart_color.setVisibility(View.INVISIBLE);
+                ic_stars.setVisibility(View.VISIBLE);
+                star_color.setVisibility(View.INVISIBLE);
             }
 
 
@@ -188,26 +219,26 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
 
 
-            ic_hea.setOnClickListener(new View.OnClickListener() {
+            ic_stars.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     tweet.favorite_count++;
-                    ic_hea.setVisibility(View.INVISIBLE);
-                    heart_color.setVisibility(View.VISIBLE);
-                    heart_color.setText(tweet.getFavorite_count());
+                    ic_stars.setVisibility(View.INVISIBLE);
+                    star_color.setVisibility(View.VISIBLE);
+                    star_color.setText(tweet.getFavorite_count());
                     tweet.favorited=true;
                 }
             });
 
 
 
-            heart_color.setOnClickListener(new View.OnClickListener() {
+            star_color.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     tweet.favorite_count--;
-                    ic_hea.setVisibility(View.VISIBLE);
-                    heart_color.setVisibility(View.INVISIBLE);
-                    ic_hea.setText(tweet.getFavorite_count());
+                    ic_stars.setVisibility(View.VISIBLE);
+                    star_color.setVisibility(View.INVISIBLE);
+                    ic_stars.setText(tweet.getFavorite_count());
                     tweet.favorited=false;
                 }
             });
@@ -222,11 +253,19 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                 }
             });
 
+            ic_sha.setOnClickListener((View v) -> {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, tweet.getUrl());
+                context.startActivity(Intent.createChooser(shareIntent, "Share link using"));
+            });
             }
 
 
+
     }
-    }
+
+}
 
 
 

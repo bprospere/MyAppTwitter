@@ -100,7 +100,7 @@
 
 
     <TextView
-        android:id="@+id/ic_hea"
+        android:id="@+id/ic_stars"
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:layout_below="@id/profileImage"
@@ -108,7 +108,7 @@
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/ic_rep"
         android:drawablePadding="8dp"
-        app:drawableLeftCompat="@drawable/ic_heart" />
+        app:drawableLeftCompat="@drawable/ic_star" />
 
     <TextView
         android:id="@+id/ic_sha"
@@ -117,21 +117,21 @@
         android:layout_below="@+id/profileImage"
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
-        android:layout_toEndOf="@id/ic_hea"
+        android:layout_toEndOf="@id/ic_stars"
         android:drawablePadding="8dp"
         app:drawableLeftCompat="@drawable/ic_share"
          />
 
     <TextView
-        android:id="@+id/heart_color"
+        android:id="@+id/star_color"
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:layout_below="@id/profileImage"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="-1dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
         android:layout_toEndOf="@id/ic_rep"
         android:drawablePadding="8dp"
-        app:drawableLeftCompat="@drawable/heart_change" />
+        app:drawableLeftCompat="@drawable/star_change" />
     <TextView
         android:id="@+id/ic_rep_change"
         android:layout_width="50dp"

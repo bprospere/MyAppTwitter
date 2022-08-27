@@ -1,11 +1,24 @@
 package com.codepath.apps.restclienttemplate;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcel;
+import android.text.Editable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+
+import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +26,12 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 
 import com.bumptech.glide.Glide;
@@ -33,21 +45,18 @@ import org.parceler.Parcels;
 
 import okhttp3.Headers;
 
-public class ComposeDialogFragment extends DialogFragment {
+public class CommentDialogFragment extends DialogFragment {
     public  static final String TAG="ComposeDialogFragment";
     public  static final  int MAX_TWEET_LENGTH=140;
-    EditText etFragment;
-    Button btnFragment;
+    EditText etComment;
     Context context;
+    Button btnComment;
     TwitterClient client;
-    ImageButton btnCancel1;
+    ImageButton btnCancel;
     ImageView tvProfileImage;
-    TextView names;
-    TextView  userNames;
-
-
-
-    public ComposeDialogFragment() {
+    TextView name;
+    TextView userName;
+    public CommentDialogFragment() {
 
     }
 
@@ -70,18 +79,21 @@ public class ComposeDialogFragment extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
             Bundle savedInstanceState) {
         return inflater.inflate(R.layout.activity_compose_fragment, container);
+
+
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        etFragment = (EditText) view.findViewById(R.id.etFragment);
-        btnFragment = (Button) view.findViewById(R.id.btnFragment);
-        btnCancel1=(ImageButton) view.findViewById(R.id.btnCancel1);
-        tvProfileImage= (ImageView) view.findViewById(R.id.tvProfileImage);
-        names= (TextView) view.findViewById(R.id.names);
-        userNames= (TextView) view.findViewById(R.id.userNames);
+        etComment =  view.findViewById(R.id.etComment);
+        btnComment = view.findViewById(R.id.btnComment);
+        btnCancel=view.findViewById(R.id.btnCancel);
+        name=view.findViewById(R.id.name);
+        userName=view.findViewById(R.id.userName);
+        tvProfileImage=view.findViewById(R.id.tvProfileImage);
         client=TwitterApp.getRestClient(getContext());
 
         String title = getArguments().getString("title", "Enter your text");
@@ -93,28 +105,25 @@ public class ComposeDialogFragment extends DialogFragment {
 
         Bundle bundle=getArguments();
         User user= Parcels.unwrap(bundle.getParcelable("userInfo"));
-
-
-        names.setText(user.name);
-        userNames.setText(user.screenName);
-
+        name.setText(user.name);
+        userName.setText(user.screenName);
 
         Glide.with(this)
                 .load(user.profileImageUrl)
                 .transform(new CircleCrop())
                 .into(tvProfileImage);
 
-        btnCancel1.setOnClickListener(new View.OnClickListener() {
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dismiss();
             }
         });
 
-        btnFragment.setOnClickListener(new View.OnClickListener() {
+        btnComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String tweetContent=etFragment.getText().toString();
+                String tweetContent=etComment.getText().toString();
                 if(tweetContent.isEmpty()){
 
                     Toast.makeText(context,"Sorry your tweet cannot be empty",Toast.LENGTH_LONG).show();
@@ -154,3 +163,4 @@ public class ComposeDialogFragment extends DialogFragment {
 
 
 }
+
