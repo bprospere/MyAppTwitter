@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,8 +17,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.TweetDao;
 import com.codepath.apps.restclienttemplate.models.TweetWithUser;
@@ -55,12 +58,28 @@ public class TimelineActivity extends AppCompatActivity {
         Bundle bundle=new Bundle();
         bundle.putParcelable("userInfo",Parcels.wrap(user));
         composeDialogFragment.setArguments(bundle);
-        bundle.putParcelable("userInfo1",Parcels.wrap(user));
-        composeDialogFragment.setArguments(bundle);
         composeDialogFragment.show(fm, "activity_compose_fragment");
 
     }
 
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.compose)
+            Toast.makeText(this,"Compose",Toast.LENGTH_SHORT);
+        Intent intent= new Intent(this,ComposeActivity.class);
+        startActivity(intent);
+        return true;
+
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

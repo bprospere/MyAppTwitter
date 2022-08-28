@@ -22,7 +22,8 @@
         android:layout_height="17dp"
         android:layout_marginStart="140dp"
         android:layout_marginTop="10dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:Text="prospere" />
 
     <TextView
         android:id="@+id/userName"
@@ -31,7 +32,8 @@
         android:layout_below="@id/name"
         android:layout_marginStart="140dp"
         android:layout_marginTop="-3dp"
-        android:text="bprospere" />
+        tools:Text="bprospere"
+         />
 
 
     <Button
@@ -44,6 +46,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="33dp"
         android:layout_marginEnd="43dp"
+        android:backgroundTint="#1DA1FD"
         android:text="@string/reply"
         tools:ignore="NotSibling,TouchTargetSizeCheck" />
 
@@ -77,7 +80,7 @@
             android:drawablePadding="8dp"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="@string/reply_this_tweet"
+            android:hint="@string/what_s_happenning"
             android:inputType="textImeMultiLine"
             app:drawableLeftCompat="@drawable/arrow_down"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />

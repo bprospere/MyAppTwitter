@@ -15,6 +15,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,6 +36,9 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import okhttp3.Headers;
 
 public class DetailActivity extends AppCompatActivity {
+    public  static final String TAG="DetailActivity";
+    public  static final  int MAX_TWEET_LENGTH=140;
+    TwitterClient client;
     ImageView image;
     TextView name;
     TextView userName;
@@ -47,6 +53,8 @@ public class DetailActivity extends AppCompatActivity {
     TextView star_color;
     TextView  ic_rep_change;
     TextView ic_sha;
+    EditText etComment1;
+    Button btnInput;
 
 
 
@@ -81,13 +89,9 @@ public class DetailActivity extends AppCompatActivity {
         star_color=findViewById(R.id.star_color);
         ic_rep_change=findViewById(R.id.ic_rep_change);
         ic_sha=findViewById(R.id.ic_sha);
-
-
-
-
-
-
-
+        etComment1=findViewById(R.id.etComment1);
+        btnInput=findViewById(R.id.btnInput);
+        client= TwitterApp.getRestClient(this);
         Tweet tweet=Parcels.unwrap(getIntent().getParcelableExtra("tweets"));
 
 
@@ -107,12 +111,11 @@ public class DetailActivity extends AppCompatActivity {
             private void showEditDialog2() {
                 FragmentManager fm = getSupportFragmentManager();
                 ComposeDialogFragment composeDialogFragment = ComposeDialogFragment.newInstance("Some Title");
-                Bundle bundle=new Bundle();
-                bundle.putParcelable("userInfo",Parcels.wrap(TimelineActivity.user));
-                composeDialogFragment.setArguments(bundle);
-                composeDialogFragment.show(fm, "activity_comment_frament");
+                composeDialogFragment.show(fm, "activity_compose");
             }
         });
+
+
 
         ic_sha.setOnClickListener((View v) -> {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
@@ -122,7 +125,52 @@ public class DetailActivity extends AppCompatActivity {
         });
 
 
+        btnInput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tweetContent = etComment1.getText().toString();
+                if (tweetContent.isEmpty()) {
+                    Toast.makeText(DetailActivity.this, "Sorry, your tweet cannot be empty", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
+                if(tweetContent.length()>  MAX_TWEET_LENGTH) {
+                    Toast.makeText(DetailActivity.this, "Sorry, your tweet is too long ", Toast.LENGTH_LONG).show();
+
+                    return;
+                }
+                Toast.makeText(DetailActivity.this,tweetContent , Toast.LENGTH_LONG).show();
+
+                //        Make an Api  Call to Twitter to publish the tweet
+                client.publishTweet(tweetContent, new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Headers headers, JSON json) {
+                        Log.e(TAG,"onSuccess");
+                        try {
+                            Tweet tweet = Tweet.fromJson (json.jsonObject);
+                            Log.i (TAG,"published teeet says: "+tweet.body);
+                            Intent intent = new Intent();
+                            intent.putExtra("tweet", Parcels.wrap(tweet));
+//                            Set result code and bundle data for response
+                            setResult(RESULT_OK,intent);
+//                            Closes the activity , pass data to parent
+                            finish();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+                        Log.e(TAG,"OnFailure to publish tweet ",throwable);
+
+                    }
+                });
+
+            }
+
+        });
 
         if(tweet.favorited) {
             ic_stars.setVisibility(View.INVISIBLE);

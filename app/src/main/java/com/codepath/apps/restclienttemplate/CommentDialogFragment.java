@@ -1,7 +1,11 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -116,9 +120,16 @@ public class CommentDialogFragment extends DialogFragment {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dismiss();
+                open();
+
             }
         });
+
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String username = pref.getString("username", "");
+        if (!username.isEmpty()) {
+            etComment.setText(username);
+        }
 
         btnComment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,7 +171,35 @@ public class CommentDialogFragment extends DialogFragment {
             }
         });
     }
+    public void open(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+        alertDialogBuilder.setMessage("Do you want to save or delete this message");
+        alertDialogBuilder.setPositiveButton("Save",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        Save();
+                    }
+                });
 
+        alertDialogBuilder.setNegativeButton("Delete",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    public void Save(){
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor edit = pref.edit();
+        edit.putString("username",etComment.getText().toString());
+        edit.commit();
+        dismiss();
+    }
 
 }
 

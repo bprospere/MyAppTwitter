@@ -9,4 +9,3 @@
         android:layout_gravity="bottom|right"
         app:showAsAction="always" />
 </menu>
-    <!--        app:layout_anchorGravity="bottom|right|end"-->

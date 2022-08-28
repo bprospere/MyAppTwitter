@@ -15,10 +15,10 @@
         android:layout_alignBottom="@+id/userNames"
         android:layout_alignParentStart="true"
         android:layout_marginStart="0dp"
-        android:backgroundTint="@android:color/white"
-        android:background="@android:color/white"
         android:layout_marginBottom="14dp"
         android:layout_weight="1"
+        android:background="@android:color/white"
+        android:backgroundTint="@android:color/white"
         app:srcCompat="@drawable/ic_cancel"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -39,25 +39,26 @@
         android:layout_width="92dp"
         android:layout_height="39dp"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="-3dp"
         android:layout_toEndOf="@+id/btnCancel1"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:Text="prospere" />
 
     <TextView
         android:id="@+id/userNames"
         android:layout_width="100dp"
         android:layout_height="34dp"
         android:layout_below="@id/names"
-        android:layout_marginStart="170dp"
-        android:layout_marginTop="-3dp"
-        android:text="bprospere" />
+        android:layout_marginStart="165dp"
+        android:layout_marginTop="8dp"
+        tools:Text="bprospere" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text3"
         android:layout_width="457dp"
         android:layout_height="93dp"
         android:layout_below="@id/tvProfileImage"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="150dp"
         app:counterEnabled="true"
         app:counterMaxLength="140"
         tools:ignore="NotSibling">
@@ -72,7 +73,7 @@
             android:drawablePadding="8dp"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="@string/reply_this_tweet"
+            android:hint="@string/what_s_happenning"
             android:inputType="textImeMultiLine"
             app:drawableLeftCompat="@drawable/arrow_down"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -89,6 +90,7 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="#1DA1FD"
         android:gravity="bottom|center"
         android:text="@string/tweet" />
 
