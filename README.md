@@ -35,7 +35,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src=videoTwitter2 />
+<img src=videoTwitter2(1) />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
