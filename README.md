@@ -4,7 +4,8 @@ Time spent: **X** hours spent in total
 
 ## User Stories
 
-The following **required** functionality is completed:
+The following **required** functionality is completed:![videoTwitter2 (1)](https://user-images.githubusercontent.com/93800102/202554908-9f6d7977-798c-4a8e-bf16-9543582c692c.gif)
+
 
 - [x] User can **compose and post a new tweet**
   - [x] User can click a “Compose” icon in the Action Bar on the top right
